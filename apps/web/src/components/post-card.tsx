@@ -87,7 +87,7 @@ function clickedInteractiveElement(target: EventTarget | null) {
   )
 }
 
-function ArticleCardBlock({
+export function ArticleCardBlock({
   card,
 }: {
   card: NonNullable<Post["articleCard"]>

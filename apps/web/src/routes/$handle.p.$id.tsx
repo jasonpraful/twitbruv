@@ -16,6 +16,7 @@ import {
 import { ApiError, api } from "../lib/api"
 import { useSubmitHotkey } from "../lib/hotkeys"
 import { Avatar } from "../components/avatar"
+import { ArticleCardBlock } from "../components/post-card"
 import { RichText } from "../components/rich-text"
 import { useMe } from "../lib/me"
 import type { Post, Thread } from "../lib/api"
@@ -285,9 +286,13 @@ function AncestorPost({
             </span>
           </div>
 
-          <p className="mt-1 text-[13.5px] leading-[1.55] break-words whitespace-pre-wrap">
-            <RichText text={post.text} />
-          </p>
+          {post.articleCard ? (
+            <ArticleCardBlock card={post.articleCard} />
+          ) : (
+            <p className="mt-1 text-[13.5px] leading-[1.55] break-words whitespace-pre-wrap">
+              <RichText text={post.text} />
+            </p>
+          )}
 
           {post.media && post.media.length > 0 && (
             <div
@@ -475,9 +480,13 @@ function ParentPost({
         <IconDots size={14} className="shrink-0 text-muted-foreground" />
       </div>
 
-      <p className="mt-2.5 text-[15.5px] leading-[1.5] break-words whitespace-pre-wrap">
-        <RichText text={post.text} />
-      </p>
+      {post.articleCard ? (
+        <ArticleCardBlock card={post.articleCard} />
+      ) : (
+        <p className="mt-2.5 text-[15.5px] leading-[1.5] break-words whitespace-pre-wrap">
+          <RichText text={post.text} />
+        </p>
+      )}
 
       {post.media && post.media.length > 0 && (
         <div
@@ -790,9 +799,13 @@ function ReplyCard({
         <IconDots size={13} className="text-muted-foreground" />
       </div>
 
-      <p className="mt-1.5 text-[13.5px] leading-[1.55] break-words whitespace-pre-wrap">
-        <RichText text={post.text} />
-      </p>
+      {post.articleCard ? (
+        <ArticleCardBlock card={post.articleCard} />
+      ) : (
+        <p className="mt-1.5 text-[13.5px] leading-[1.55] break-words whitespace-pre-wrap">
+          <RichText text={post.text} />
+        </p>
+      )}
 
       {/* biome-ignore lint/a11y/useKeyWithClickEvents: action bar wrapper */}
       <div
